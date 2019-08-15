@@ -18,7 +18,12 @@
 
     </div>
 
-  
+    {%if i.image is not none:%}
+    <div class="form-group">
+      <label for="name">Image:</label>
+      <img id="print" src={{i.image}} />
+    </div>
+    {%endif%}
     {%if i.qlink is not none:%}
     <div class="form-group">
       <label for="name">Reference link:</label><a href="{{i.qlink}}">click here</a>

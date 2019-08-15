@@ -534,6 +534,8 @@ def des2(request):
         qno = request.params['qno']
         qmark = request.params['qmark']
         link = request.params['qlink']
+        obj.image=request.params['img']
+
         #image =request.params['img']
         query = request.dbsession.query(DescQuestion)
         filename = request.POST['img'].filename
@@ -653,6 +655,8 @@ def tf2(request):
         obj.test_id = session['testid']
         link=  request.params['qlink']
         obj.qlink = link
+        obj.image=request.params['img']
+
         request.dbsession.add(obj)
         url=request.route_url('ctac')
         return HTTPFound(url)
@@ -705,6 +709,7 @@ def mcq2(request):
         obj.r4l4 = request.params['sug44']
         link=  request.params['qlink']
         obj.qlink = link
+        obj.image=request.params['img']
         request.dbsession.add(obj)
         url=request.route_url('ctac')
         return HTTPFound(url)
@@ -1918,6 +1923,8 @@ def studentdes2(request):
         obj.qmark = qmark
 
         obj.qlink = link
+        obj.image=request.params['img']
+
         obj.test_id = session['testid']
         request.dbsession.add(obj)
         url=request.route_url('studentctac')
@@ -1962,6 +1969,8 @@ def studenttf2(request):
         obj.mark = qmark
         link=  request.params['qlink']
         obj.qlink = link
+        obj.image=request.params['img']
+
         obj.test_id = session['testid']
         request.dbsession.add(obj)
         url=request.route_url('studentctac')
@@ -2015,6 +2024,8 @@ def studentmcq2(request):
         obj.r4l4 = request.params['sug44']
         link=  request.params['qlink']
         obj.qlink = link
+        obj.image=request.params['img']
+
         request.dbsession.add(obj)
         url=request.route_url('studentctac')
         return HTTPFound(url)
@@ -2047,6 +2058,7 @@ def studentmcqn2(request):
         link=  request.params['qlink']
         obj.qlink = link
         obj.crct = request.params['answer']
+        obj.image=request.params['img']
 
         request.dbsession.add(obj)
         url=request.route_url('studentctac')

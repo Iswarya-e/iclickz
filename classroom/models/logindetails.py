@@ -102,7 +102,7 @@ class DescQuestion(Base):
     test_id =  Column(Integer, ForeignKey('test.test_id'))
     Answer = Column(Text)
     qmark = Column(Integer)
-    image = Column(BYTEA)
+    image = Column(Text)
     qlink = Column(Text)
 
 class Mcq(Base):
@@ -140,7 +140,7 @@ class Mcq(Base):
     r4l3 = Column(Text)
     r4l4 = Column(Text)
     qlink = Column(Text)
-    image = Column(BYTEA)
+    image = Column(Text)
 class Mcqn(Base):
     __tablename__ = 'mcqn'
     question_id = Column(Integer, primary_key=True)
@@ -165,7 +165,7 @@ class Truefalse(Base):
     Answer = Column(Text)
     mark = Column(Integer)
     qlink = Column(Text)
-    image = Column(BYTEA)
+    image = Column(Text)
 
 
 class Studentcourse(Base):
