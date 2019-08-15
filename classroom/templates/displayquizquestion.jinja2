@@ -1,0 +1,36 @@
+{% extends "teachernav.jinja2" %}
+{% block content %}
+<div>
+<form action="quiztemplate1" method="POST">
+<table>
+{%for i in det :%}
+
+<tr>
+  <th>Question No</th>
+  <th>Question</th>
+  <th>opt1</th>
+  <th>opt2</th>
+  <th>opt3</th>
+  <th>opt4</th>
+</tr>
+<br>
+  <tr>
+    <td> {{i.question_no}}</td>
+    <td> {{i.question_name}}</td>
+    <td> {{i.opt1}}</td>
+    <td> {{i.opt2}}</td>
+    <td> {{i.opt3}}</td>
+    <td> {{i.opt4}}</td>
+
+
+<br>
+  </tr>
+{% endfor %}
+
+</table>
+<input type="submit" class = "btn btn-primary" value="ADD QUESTION">
+</form>
+
+
+</div>
+{% endblock content %}

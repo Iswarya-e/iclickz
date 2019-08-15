@@ -1,0 +1,39 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+
+
+<div class="container">
+  <h2> Create Questions</h2>
+  <form action="/studenttf2" method="POST">
+  <div class="form-group">
+    <label for="name">Enter the question number:</label>
+    <input type="id" class="form-control" id="name" placeholder="Type the Question number...." name="qno" required>
+  </div>
+  <div class="form-group">
+    <label for="name">Enter the mark:</label>
+    <input type="text" class="form-control" id="name" placeholder="Enter the mark...." name="qmark" required>
+  </div>
+    <div class="form-group">
+      <label for="name">Enter the question:</label>
+      <input type="text" class="form-control" id="name3" placeholder="Type the Question...." name="qname" required>
+    </div>
+    <div class="form-group">
+      <label for="name">Enter the Image if any:</label>
+        <input type="file" name='qnimage' accept="image/*">
+        </div>
+        <div class="form-group">
+        <label for="name">Enter the reference link if any:</label>
+          <input type="text" name='qlink'>
+          </div>
+
+    <div class="form-group">
+      <label for="Answer">Enter the Answer:</label>
+        <input type="radio"   name="answer" id="1" value="True"><label for="1"> True</label>
+        <input type="radio"   name="answer" id="2" value="False"><label for="2"> False</label>
+    </div>
+      <input type="submit" class="btn btn-default"></button>
+      </form>
+      </div>
+
+
+{% endblock content %}

@@ -1,0 +1,236 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+<title>Quiz</title>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+
+<body>
+	<h6 id="err"></h6>
+	<label>Life:<p id="life">3</p>	</label><br>
+
+<p id="demo">  </p>
+<h2 id="test_status"></h2>
+<div id="test"></div>
+<div id="countdown"></div>
+<script type="text/javascript">
+var pos = 0;
+var test, test_status, question, choice, choices, chA, chB, chC, chD = 0;
+var  correct = 0;
+var life = 3;
+var dhint = 0;
+var rmvopt = 0;
+var choices1;
+var timeleft=0;
+var et=0;
+var a,b,c,d;
+var questions = {{a|safe}};
+var opt1= {{b|safe}};
+var opt2= {{c|safe}};
+var opt3= {{d|safe}};
+var opt4= {{e|safe}};
+var crct= {{f|safe}};
+var qhint1= {{hint|safe}};
+var qtime= {{a1|safe}}
+var etime = {{ext|safe}}
+function get(x){
+	return document.getElementById(x);
+}
+function timer(){
+  demo.style.visibility = "hidden";
+	timeleft = qtime[pos];
+  var downloadTimer = setInterval(function(){
+  document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+  timeleft -= 1;
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+      document.getElementById("countdown").innerHTML = "  welcome";
+		pos++;
+		renderQuestion()
+  }
+}, 1000);
+}
+
+function renderQuestion(){
+
+	timeleft=0;
+	test = get("test");
+	if(pos >= questions.length)
+	{    demo.style.visibility = "hidden"
+		test.innerHTML = "<h2>You got "+ correct +" of "+questions.length+" questions correct</h2>";
+		get("test_status").innerHTML = "Test completed";
+
+		return false;
+	}
+ else{
+  timer();
+	get("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+	question = questions[pos];
+	chA = opt1[pos];
+	chB = opt2[pos];
+	chC = opt3[pos];
+	chD = opt4[pos];
+	qhint=qhint1[pos]
+	ext = etime[pos];
+	test.innerHTML = "<h3>"+question+"</h3>";
+	test.innerHTML += "<input type='radio'  id='1' name='choices'> "+chA+"<br>";
+	document.getElementById('1').setAttribute('value',chA);
+	test.innerHTML += "<input type='radio' id='2' name='choices' > "+chB+"<br>";
+		document.getElementById('2').setAttribute('value',chB);
+	test.innerHTML += "<input type='radio' id='3' name='choices' > "+chC+"<br>";
+		document.getElementById('3').setAttribute('value',chC);
+	test.innerHTML += "<input type='radio' id='4' name='choices' > "+chD+"<br><br>";
+		document.getElementById('4').setAttribute('value',chD);
+	test.innerHTML += "<button id='rmvopt' onclick='remove()'> Remove options </button>";
+	test.innerHTML += "<button id='dhint' onclick='myFunction(qhint)'> Hint </button>";
+	test.innerHTML += "<button id='extime' onclick='timefunc(ext)'> Extend time </button>";
+	test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
+}
+}
+function checkAnswer(){
+	choices = document.getElementsByName("choices");
+	for(var i=0; i<choices.length; i++){
+		console.log(choices[i].value)
+		if(choices[i].checked){
+			choice = choices[i].value;
+
+		}
+	}
+
+	if(choice == crct[pos]){
+		correct++;
+	}
+	pos++;
+	renderQuestion();
+}
+
+function myFunction(name)
+{
+	if(dhint == 0)
+	{
+		if(life > 0)
+		{
+      demo.style.visibility = "visible"
+      document.getElementById('demo').innerHTML = name ;
+			document.getElementById('dhint').disabled = true
+			document.getElementById('life').innerHTML  = document.getElementById("life").innerHTML  - 1
+			dhint = dhint + 1
+    }
+		else
+		{
+		 document.getElementById('dhint').disabled =true
+		 document.getElementById("err").innerHTML = "No life left !"
+
+		}
+	 }
+	else
+	{
+ 			document.getElementById('dhint').disabled =true
+ 	}
+	}
+
+function remove()
+{
+
+		if(rmvopt == 0)
+		{
+		 	if(life >0)
+		 	{
+				choices1 = document.getElementsByName("choices");
+		  	document.getElementById('rmvopt').disabled = true
+				console.log(crct[pos],choices1)
+		  	document.getElementById("life").innerHTML  = document.getElementById("life").innerHTML  - 1
+		  	rmvopt = rmvopt + 1
+
+		  	for(var i=0; i<choices1.length; i++)
+				{
+					a=choices1[0].value
+					b=choices1[1].value
+					c=choices1[2].value
+					d=choices1[3].value
+        
+
+		  		if(crct[pos] == a)
+		  		{
+
+            document.getElementById('1').style.visibility = "visible"
+            document.getElementById('4').style.visibility = "visible"
+            document.getElementById('2').style.visibility = "hidden"
+            document.getElementById('3').style.visibility = "hidden"
+
+
+		  		}
+
+		  		if(crct[pos] == b)
+		  		{
+
+
+            document.getElementById('3').style.visibility = "visible"
+            document.getElementById('2').style.visibility = "visible"
+            document.getElementById('1').style.visibility = "hidden"
+            document.getElementById('4').style.visibility = "hidden"
+
+		  		}
+
+		 			if(crct[pos] == c)
+		 			{
+
+
+
+            document.getElementById('3').style.visibility = "visible"
+            document.getElementById('1').style.visibility = "visible"
+            document.getElementById('2').style.visibility = "hidden"
+            document.getElementById('4').style.visibility = "hidden"
+		 			}
+
+		 			if(crct[pos] == d)
+		 			{
+
+            document.getElementById('4').style.visibility = "visible"
+            document.getElementById('1').style.visibility = "visible"
+            document.getElementById('2').style.visibility = "hidden"
+            document.getElementById('3').style.visibility = "hidden"
+		 			}
+     	}
+		 }
+		 else
+		 {
+		 		document.getElementById('rmvopt').disabled = true
+		  	document.getElementById("err").innerHTML = "No life left !"
+		 }
+		 }
+		 else
+		 	{
+			 			document.getElementById('rmvopt').disabled =true
+		 	}
+ }
+function timefunc(time)
+{
+			if(et== 0)
+			{
+					if(life>0)
+					{
+						et = et+1
+						timeleft=timeleft+time;
+						document.getElementById("life").innerHTML  = document.getElementById("life").innerHTML  - 1
+						document.getElementById('extime').disabled = true
+					}
+					else
+				  {
+						document.getElementById('extime').disabled =true
+ 		 				document.getElementById("err").innerHTML = "No life left !"
+
+					}
+			}
+			else
+			{
+				document.getElementById('extime').disabled =true
+			}
+
+}
+
+
+window.addEventListener("load", renderQuestion, false);
+</script>
+{% endblock content %}

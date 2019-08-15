@@ -1,0 +1,3 @@
+[run]
+source = classroom
+omit = classroom/test*

@@ -1,0 +1,60 @@
+
+{% extends "studentnav.jinja2" %}
+{% block content %}
+<script type="text/javascript">
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme: "light2", // "light2", "dark1", "dark2"
+	animationEnabled: true, // change to true
+	title:{
+		text: "Marks"
+	},
+  axisY:{includeZero: false},
+	data: [
+	{
+		// Change type to "bar", "area", "spline", "pie",etc.
+		type: "line",
+		dataPoints: [
+    {%for i in query :%}
+			{ label: "{{i.test_id}}",  y: {{i.percentage}}  },
+		{% endfor %}
+		]
+	}
+	]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
+
+
+<p>
+
+</p>
+
+<table style="width:100%">
+  <tr>
+    <th>Test ID</th>
+    <th>Marks</th>
+
+  </tr>
+{%for i in query :%}
+  <tr>
+
+    <td> {{i.test_id}}</td>
+    <td> {{i.mark}} </td>
+
+  </tr>
+
+{% endfor %}
+
+</table>
+
+
+
+{% endblock content %}

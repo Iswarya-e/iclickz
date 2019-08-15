@@ -1,0 +1,36 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+
+
+<div class="container">
+  <h2> Add Course</h2>
+  <form action="/a1" method="POST">
+
+    <div class="form-group">
+      <label for="cname">Course Name:</label>
+      <input type="text" class="form-control" id="cname" placeholder="Enter course name" name="cname" required>
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="course_id">Enter the Course id:</label>
+      <input type="text" class="form-control" id="course_id" placeholder="Enter the Course id" name="course_id">
+      <label>{{error}}</label>
+    </div>
+    <input type="submit" class="btn btn-default" >
+  </form>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">    </script>
+
+<script>
+$("#cname").keypress(function () {
+      var _val = $("#cname").val();
+      var _txt = _val.charAt(0).toUpperCase() + _val.slice(1);
+      $("#cname").val(_txt);
+  })
+  </script>
+
+{% endblock content %}

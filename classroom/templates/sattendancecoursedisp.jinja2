@@ -1,0 +1,30 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+
+<div>
+<table style="width:100%">
+  <tr>
+    <th>Course ID</th>
+    <th>Course name</th>
+
+  </tr>
+{%for i in course :%}
+  <tr>
+
+    <td> {{i.course_id}}</td>
+    <td><form action="/sattfinaldisp" method="POST">
+      <input type="hidden" name ="course_id" value={{i.course_id}}>
+
+      <input type="submit" value="{{i.course_name}}"></form>
+
+    </td>
+
+  </tr>
+{% endfor %}
+
+</table>
+
+
+</div>
+
+{% endblock content %}

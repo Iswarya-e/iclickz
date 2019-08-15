@@ -1,0 +1,179 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+
+
+
+<form action="/quizvalidate"
+
+<div class="container">
+  <h2> Test</h2>
+
+
+<h6 id="err"></h6>
+
+  {%for i,k in question:%}
+    <div class="form-group">
+<h6 id="qtime"></h6>
+<h6 id="crctopt"></h6>
+      <label for="name">Question no:</label><p>{{i.question_no}}</p>
+
+    </div>
+
+<p style="display:none" id="extendtime">{{i.extension_time}}</p>
+    <div class="form-group">
+      <label for="name">Question:</label><p>{{i.question_name}}</p>
+
+    </div>
+    <div class="form-group">
+      <label for="Answer">Enter the Answer:</label><br>
+<label for="Timer">Timer:
+<p id="timer"></p>
+</label><br>
+<label>Life:
+<p id="life">3</p>
+</label><br>
+
+        <input type="radio" id="1"  name="answer{{k}}" value="opt1"> {{i.opt1}}<br>
+
+        <input type="radio" id ="2" name="answer{{k}}" value="opt2"> {{i.opt2}}<br>
+        <input type="radio" id="3"  name="answer{{k}}" value="opt3"> {{i.opt3}}<br>
+        <input type="radio" id="4"  name="answer{{k}}" value="opt4"> {{i.opt4}}<br>
+        <p style="visibility:hidden" id="hint">{{i.hint}}</p>
+
+    </div>
+    <input type="button" onclick="disphint()" class="btn btn-primary" id="dhint" value="hint">
+    <input type="button" class="btn btn-primary" value="Remove options" id="rmvopt" onclick="remove()">
+    <input type="button" class="btn btn-primary" id="exttime" value="Extend time" onclick="extendtime( document.getElementById('extendtime').innerHTML)">
+      <input type="submit" class="btn btn-primary" value="submit">
+
+    {% endfor %}
+
+<script>
+var life = document.getElementById("life").innerHTML
+var hint = document.getElementById("hint")
+var qtime = document.getElementById('qtime')
+var myVar = setInterval(myTimer, 1000)
+var counter
+var rmopt = 0
+var extime = 0
+var dhint = 0
+var i=10
+var ans = document.getElementById('crctopt').innerHTML
+var etime = document.getElementById('extendtime').innerHTML
+
+if ( typeof etime == 'undefined' ) {
+        etime = 0;
+    }
+function myTimer() {
+
+if ( typeof counter == 'undefined' ) {
+        counter = 0;
+    }
+  if(counter == (qtime + parseInt(etime)))
+  {
+  clearInterval(myVar)
+  document.getElementById('exttime').disabled = true
+  }
+  document.getElementById("timer").innerHTML = ++counter;
+
+}
+function extendtime(time)
+{
+
+if(extime == 0)
+{
+if(life >0)
+
+{
+
+document.getElementById("life").innerHTML  = document.getElementById("life").innerHTML  - 1
+counter = parseInt(counter) + parseInt(time)
+document.getElementById("timer").innerHTML = counter
+extime = extime + 1
+document.getElementById('exttime').disabled = true
+}
+else
+{
+
+document.getElementById("err").innerHTML = "No life left !"
+document.getElementById('exttime').disabled = true
+
+}
+}
+}
+function disphint()
+{
+if(dhint == 0)
+{
+if(life > 0)
+
+{
+
+hint.style.visibility = "visible"
+document.getElementById('dhint').disabled = true
+document.getElementById("life").innerHTML  = document.getElementById("life").innerHTML  - 1
+dhint = dhint + 1
+document.getElementById('dhint').disabled = true
+}
+else
+{
+hint.style.visibility = "hidden"
+document.getElementById('dhint').disabled =false
+document.getElementById("err").innerHTML = "No life left !"
+}
+}
+}
+
+function remove()
+{
+
+if(rmopt == 0)
+{
+if(life >0)
+{
+document.getElementById('rmvopt').disabled = true
+document.getElementById("life").innerHTML  = document.getElementById("life").innerHTML  - 1
+rmopt = rmopt + 1
+if(ans == 1)
+{
+document.getElementById('1').style.visibility = "visible"
+document.getElementById('4').style.visibility = "visible"
+document.getElementById('2').style.visibility = "hidden"
+document.getElementById('3').style.visibility = "hidden"
+}
+
+else if(ans == 2)
+{
+document.getElementById('2').style.visibility = "visible"
+document.getElementById('1').style.visibility = "visible"
+document.getElementById('3').style.visibility = "hidden"
+document.getElementById('4').style.visibility = "hidden"
+}
+
+else if(ans == 3)
+{
+
+document.getElementById('3').style.visibility = "visible"
+document.getElementById('1').style.visibility = "visible"
+document.getElementById('2').style.visibility = "hidden"
+document.getElementById('4').style.visibility = "hidden"
+}
+
+else if(ans == 4)
+{
+document.getElementById('4').style.visibility = "visible"
+document.getElementById('2').style.visibility = "visible"
+document.getElementById('1').style.visibility = "hidden"
+document.getElementById('3').style.visibility = "hidden"
+}
+
+}
+else
+{
+document.getElementById('rmvopt').disabled = false
+}
+}
+}
+
+</script>
+{% endblock content %}

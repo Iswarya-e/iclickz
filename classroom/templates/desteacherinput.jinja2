@@ -1,0 +1,72 @@
+{% extends "teachernav.jinja2" %}
+{% block content %}
+
+
+<div class="container">
+  <h2> Create Questions</h2>
+  <form action="/des2" method="POST" accept-charset="utf-8"
+      enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="name">Enter the question number:</label>
+    <input type="id" class="form-control" id="name1" placeholder="Type the Question number...." name="qno" required>
+  </div>
+  <div class="form-group">
+    <label for="name">Enter the mark:</label>
+    <input type="text" class="form-control" id="name2" placeholder="Enter the mark...." name="qmark" required>
+  </div>
+    <div class="form-group">
+      <label for="name">Enter the question:</label>
+      <input type="text" class="form-control" id="name3" placeholder="Type the Question...." name="qname" required>
+    </div>
+    <div class="form-group">
+    <input type='file' name="img" onchange="readURL(this);" />
+        <img id="blah" src="../static/imgs/a.jpg" alt="your image" />
+      </div>
+      <div class="form-group">
+      <label for="name">Enter the reference link if any:</label>
+        <input type="text" name='qlink'>
+        </div>
+
+    <div class="form-group">
+      <label for="Answer">Enter the Answer:</label>
+      <input type="text" class="form-control" id="name4" placeholder="Type the answer" name="qans" >
+    </div>
+      <button type="submit" class="btn btn-default">Save</button>
+      </form>
+      </div>
+
+
+
+    <script>
+
+      function readURL(input) {
+              if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+
+                  reader.onload = function (e) {
+                      $('#blah')
+                          .attr('src', e.target.result)
+                          .width(150)
+                          .height(200);
+                  };
+
+                  reader.readAsDataURL(input.files[0]);
+              }
+          }
+          </script>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">    </script>
+
+      <script>
+      $("#name3").keypress(function () {
+            var _val = $("#name3").val();
+            var _txt = _val.charAt(0).toUpperCase() + _val.slice(1);
+            $("#name3").val(_txt);
+        })
+        $("#name4").keypress(function () {
+              var _val = $("#name4").val();
+              var _txt = _val.charAt(0).toUpperCase() + _val.slice(1);
+              $("#name4").val(_txt);
+          })
+        </script>
+{% endblock content %}

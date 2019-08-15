@@ -1,0 +1,51 @@
+{% extends "teachernav.jinja2" %}
+{% block content %}
+<div>
+<form action="/optionforadd" method="POST">
+<table style="width:100%">
+  <tr>
+    <th>Question No</th>
+    <th>Root Question</th>
+    <th>Answer</th>
+    <th>Link Question</th>
+    <th>Answer</th>
+    <th>Root option1</th>
+    <th>Root option2</th>
+    <th>Root option3</th>
+    <th>Root option4</th>
+    <th>Link option1</th>
+    <th>Link option2</th>
+    <th>Link option3</th>
+    <th>Link option4</th>
+
+  </tr>
+{%for i in det :%}
+  <tr>
+
+    <td> {{i.question_no}}</td>
+    <td> {{i.Question_name}}</td>
+    <td> {{i.rcrct}}</td>
+    <td> {{i.linkques_name}}</td>
+    <td> {{i.lcrct}}</td>
+    <td> {{i.ropt1}}</td>
+    <td> {{i.ropt2}}</td>
+    <td> {{i.ropt3}}</td>
+    <td> {{i.ropt4}}</td>
+    <td> {{i.lopt1}}</td>
+    <td> {{i.lopt2}}</td>
+    <td> {{i.lopt3}}</td>
+    <td> {{i.lopt4}}</td>
+
+
+
+
+  </tr>
+{% endfor %}
+
+</table>
+<input type="submit" class = "btn btn-primary" value="ADD QUESTION">
+</form>
+</div>
+
+
+{% endblock content %}

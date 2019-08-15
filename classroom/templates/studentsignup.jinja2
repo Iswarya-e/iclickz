@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet" type="text/css">
+
+
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="{{request.static_url('classroom:static/emoji-picker-master/lib/css/emoji.css')}}" rel="stylesheet">
+    <link href="{{request.static_url('classroom:static/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+
+<!--
+Ramayana CSS Template
+https://templatemo.com/tm-529-ramayana
+-->
+
+    <!-- Additional CSS Files -->
+    <link href="{{request.static_url('classroom:static/assets/css/fontawesome.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{request.static_url('classroom:static/assets/css/templatemo-style.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{request.static_url('classroom:static/assets/css/owl.css')}}" rel="stylesheet" type="text/css">
+
+
+
+  </head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+              <div class="logo">
+                <a href="#"></a>
+              </div>
+            </header>
+            <div class="w3-container w3-center">
+
+              <div class="container">
+                <h2> Student Registration</h2>
+                <form action="/s1" method="POST">
+                  <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name3" placeholder="Enter name" name="name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="Institution_name">Enter the Institution Name:</label>
+                    <input type="text" class="form-control" id="name4" placeholder="Enter the institution name" name="insnm" >
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email"  name="email" required>
+                    <label> {{ error1 }} </label>
+                  </div>
+                  <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password"  name="password" required >
+                    <label> {{ error2 }} </label>
+                    <input type="checkbox" id="2"onclick="myFunction()"><label for="2"> Show Password</label>
+                  </div>
+                  <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="rppwd" placeholder="Confirm password"  name="rppwd" required >
+                    <label> {{ error3 }} </label>
+                    <input type="checkbox" id="1" onclick="myFunction1()"><label for="1"> Show Password</label>
+                  </div>
+
+
+
+                  <button type="submit" class="btn btn-default">Submit</button>
+                  <a href="/studentlogin">Already registered?</a>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+            <!-- Menu -->
+
+
+            <!-- Featured Posts -->
+
+
+
+
+          </div>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script>
+      $(document).ready(function() {
+          function disableBack() { window.history.forward() }
+
+          window.onload = disableBack();
+          window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
+      });
+    </script>
+
+    <script type="text/javascript" src="{{request.static_url('classroom:static/vendor/jquery/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{request.static_url('classroom:static/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/browser.min.js')}}"></script>
+    <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/breakpoints.min.js')}}"></script>
+    <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/transition.js')}}"></script>
+    <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/owl-carousel.js')}}"></script>
+    <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/custom.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Begin emoji-picker JavaScript -->
+    <script src="{{request.static_url('classroom:static/emoji-picker-master/lib/js/config.js')}}"></script>
+    <script src="{{request.static_url('classroom:static/emoji-picker-master/lib/js/util.js')}}"></script>
+    <script src="{{request.static_url('classroom:static/emoji-picker-master/lib/js/jquery.emojiarea.js')}}"></script>
+    <script src="{{request.static_url('classroom:static/emoji-picker-master/lib/js/emoji-picker.js')}}"></script>
+    <!-- End emoji-picker JavaScript -->
+
+    <script>
+    function myFunction() {
+      var x = document.getElementById("pwd");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>
+    <script>
+    function myFunction1() {
+      var x = document.getElementById("rppwd");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">    </script>
+
+    <script>
+    $("#name3").keypress(function () {
+          var _val = $("#name3").val();
+          var _txt = _val.charAt(0).toUpperCase() + _val.slice(1);
+          $("#name3").val(_txt);
+      })
+      $("#name4").keypress(function () {
+            var _val = $("#name4").val();
+            var _txt = _val.charAt(0).toUpperCase() + _val.slice(1);
+            $("#name4").val(_txt);
+        })
+
+      </script>
+
+</body>
+
+
+
+
+</html>

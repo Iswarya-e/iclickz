@@ -1,0 +1,28 @@
+{% extends "teachernav.jinja2" %}
+{% block content %}
+
+
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <div class="text-left">
+            <form action="/commentstore" method="POST">
+            {% for i in range(0,count):%}
+
+
+              <p> {{query[0][i]}}:{{query[1][i]}}</p>
+
+            {% endfor %}
+            <p class="lead emoji-picker-container">
+              <input type="text" textarea class="form-control textarea-control" rows="3" placeholder="Textarea with emoji image input" data-emojiable="true"></textarea>
+            </p>
+            <input type="submit" class="btn btn-default" name="formone">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}

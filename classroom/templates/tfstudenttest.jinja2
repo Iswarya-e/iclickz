@@ -1,0 +1,32 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+<div>
+<div class="container">
+  <h2> Test</h2>
+
+
+  <form action="/tfvalidate" method="POST">
+  {%for i,k in question %}
+    <div class="form-group">
+      <label for="name1">Question no:</label><p>{{i.question_no}}</p>
+
+      <label for="name2">Question:</label><p>{{i.Question_name}}</p>
+      {%if i.qlink is not none:%}
+      <div class="form-group">
+        <label for="name">Reference link:</label><a href="{{i.qlink}}">{{i.qlink}}</a>
+      </div>
+      {%endif%}
+
+
+      <label for="Answer">Enter the Answer:</label>
+        <input type="radio"  id="1" name="ans{{k}}" value="True"> <label for="1">True</label>
+        <input type="radio"  id="2" name="ans{{k}}" value="False"> <label for="2">False</label>
+
+
+    {% endfor %}
+    <input type="submit" class="btn btn-primary" value="submit">
+      </div>
+</form>
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+<div>
+
+
+
+<table style="width:100%">
+  <tr>
+    <th>Forum ID</th>
+    <th>Forum name</th>
+
+  </tr>
+{%for i in query :%}
+  <tr>
+
+    <td> {{i.forum_id}}</td>
+    <td><form action="/studfinalforum" method="POST">
+      <input type="hidden" name ="forum_id" value={{i.forum_id}}>
+
+      <input type="submit" value="{{i.forum_topic}}"></form></a>
+    </td>
+
+
+
+  </tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+
+{% endblock content %}

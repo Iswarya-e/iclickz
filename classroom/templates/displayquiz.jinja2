@@ -1,0 +1,36 @@
+{% extends "teachernav.jinja2" %}
+{% block content %}
+<form action="/quiz1">
+<div class="w3-container">
+<input class="btn btn-primary" type="submit" value="+" title="create quiz">
+</div>
+</form>
+
+
+
+
+<div>
+
+
+<table style="width:100%">
+  <tr>
+    <th>Quiz ID</th>
+    <th>Quiz name</th>
+
+  </tr>
+{%for i in query :%}
+  <tr>
+
+    <td> {{i.quiz_id}}</td>
+    <td><form action="/dispquizques" method="POST">
+      <input type="hidden" name ="quiz_id" value={{i.quiz_id}}>
+
+      <input type="submit" value="{{i.quiz_name}}"></form></td>
+  </tr>
+{% endfor %}
+
+</table>
+</div>
+
+
+{% endblock content %}

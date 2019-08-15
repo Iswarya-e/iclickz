@@ -1,0 +1,35 @@
+
+
+{% extends "teachernav.jinja2" %}
+{% block content %}
+<div class="container">
+  <h2> Create Test</h2>
+  <form action="/q1" method="POST">
+  <div class="form-group">
+    <label for="questionid">Enter the Question number:</label>
+    <input type="text" class="form-control" id="q_id" placeholder="Enter the question number" name="quid">
+  </div>
+    <div class="form-group">
+      <label for="cname"> Enter the Question:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter the question" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="Answer">Enter the Answer key:</label>
+      <input type="text" class="form-control" id="anskey" placeholder="Enter the Answer" name="answerkey">
+    </div>
+
+
+    <input type="submit" class="btn btn-default" name="formone">
+  </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">    </script>
+
+<script>
+$("#name").keypress(function () {
+      var _val = $("#name").val();
+      var _txt = _val.charAt(0).toUpperCase() + _val.slice(1);
+      $("#name").val(_txt);
+  })
+  </script>
+{% endblock content %}

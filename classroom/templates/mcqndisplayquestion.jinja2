@@ -1,0 +1,40 @@
+{% extends "teachernav.jinja2" %}
+{% block content %}
+<div>
+<form action="/optionforadd" method="POST">
+<table style="width:100%">
+  <tr>
+    <th>Question No</th>
+    <th>Question</th>
+    <th>Answer</th>
+
+    <th> option1</th>
+    <th> option2</th>
+    <th> option3</th>
+    <th> option4</th>
+
+
+  </tr>
+{%for i in det :%}
+  <tr>
+
+    <td> {{i.question_no}}</td>
+    <td> {{i.Question_name}}</td>
+    <td> {{i.crct}}</td>
+
+    <td> {{i.opt1}}</td>
+    <td> {{i.opt2}}</td>
+    <td> {{i.opt3}}</td>
+    <td> {{i.opt4}}</td>
+
+
+
+  </tr>
+{% endfor %}
+
+</table>
+<input type="submit" class = "btn btn-primary" value="ADD QUESTION">
+</form>
+</div>
+
+{% endblock content %}

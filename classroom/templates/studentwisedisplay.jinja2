@@ -1,0 +1,35 @@
+{% extends "teachernav.jinja2" %}
+{% block content %}
+
+
+
+
+
+
+
+<table style="width:100%">
+  <tr>
+    <th>Student ID</th>
+    <th>Student name</th>
+
+  </tr>
+{%for i in range(0,count)%}
+  <tr>
+
+
+    <td> {{query[0][i]}}</td>
+    <td> {{query[1][i]}}</td>
+    <td><form action="/viewattendance" method="POST">
+      <input type="hidden" name ="student_id" value={{query[0][i]}}>
+      <input type="submit" value="View attendance"></form>
+    </td>
+
+  </tr>
+{% endfor %}
+
+</table>
+
+
+
+
+{% endblock content %}

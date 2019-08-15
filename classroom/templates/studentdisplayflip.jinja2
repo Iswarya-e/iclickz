@@ -1,0 +1,38 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+
+<div class="container">
+
+
+
+
+
+
+  <table style="width:100%">
+    <tr>
+      <th>Course ID</th>
+
+      <th> Course Name</th>
+
+    </tr>
+  {%for i in query :%}
+    <tr>
+
+      <td> {{i.course_id}}</td>
+
+      <td><form action="/flipstore" method="POST">
+        <input type="hidden" name ="course_id" value={{i.course_id}}>
+        <input type="submit" value="Test"></form>
+      </td>
+
+
+
+    </tr>
+
+  {% endfor %}
+
+  </table>
+
+</div>
+
+{% endblock content %}

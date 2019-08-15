@@ -1,0 +1,49 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+
+
+
+
+
+<div class="container">
+  <h2> Test</h2>
+
+
+  <form action="/#" method="POST">
+  {%for i,k in question %}
+    <div class="form-group">
+
+      <label for="name">Question no:</label><p>{{i.question_no}}</p>
+
+    </div>
+    <div class="form-group">
+      <label for="name">Question:</label><p>{{i.Question_name}}</p>
+
+    </div>
+
+    <div class="form-group">
+
+        <input type="radio"   name="answer{{k}}" > {{i.ropt1}}<br>
+        <input type="radio"   name="answer{{k}}" > {{i.ropt2}}<br>
+        <input type="radio"   name="answer{{k}}" > {{i.ropt3}}<br>
+        <input type="radio"   name="answer{{k}}" > {{i.ropt4}}<br>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Link Question:</label><p>{{i.linkques_name}}</p>
+
+
+    <div class="form-group">
+
+        <input type="radio"   name="answer1{{k}}">  {{i.lopt1}}<br>
+        <input type="radio"   name="answer1{{k}}" >  {{i.lopt2}}<br>
+        <input type="radio"   name="answer1{{k}}" >  {{i.lopt3}}<br>
+        <input type="radio"   name="answer1{{k}}" >  {{i.lopt4}}<br>
+    </div>
+      </div>
+ <label for=sug>Suggestion:{{ sug }}</label>
+    {% endfor %}
+
+</form>
+</div>
+{% endblock content %}

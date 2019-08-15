@@ -1,0 +1,45 @@
+{% extends "teachernav.jinja2" %}
+{% block content %}
+<form action="/foumcreate">
+<div class="w3-container">
+
+
+
+<input class="btn btn-primary" type= "submit" value="+" title="Add forum">
+</div>
+</form>
+
+
+
+<div>
+
+
+
+<table style="width:100%">
+  <tr>
+    <th>Forum ID</th>
+    <th>Forum name</th>
+
+  </tr>
+{%for i in query :%}
+  <tr>
+
+    <td> {{i.forum_id}}</td>
+    <td><form action="/finalforum" method="POST">
+      <input type="hidden" name ="forum_id" value={{i.forum_id}}>
+
+      <input type="submit" value="{{i.forum_topic}}"></form></a>
+    </td>
+
+
+
+  </tr>
+
+{% endfor %}
+
+</table>
+
+
+</div>
+
+{% endblock content %}

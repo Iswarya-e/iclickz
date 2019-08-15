@@ -1,0 +1,31 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+<div>
+<form action="/studenttest1" method="POST">
+<div class="w3-container">
+<input class="btn btn-primary" type="submit" value="+" title="Add test">
+</div>
+</form>
+<table style="width:100%">
+  <tr>
+    <th>Test ID</th>
+    <th>Test name</th>
+
+  </tr>
+{%for i in query :%}
+  <tr>
+
+    <td> {{i.test_id}}</td>
+    <td><form action="/dispques">
+      <input type="hidden" name ="test_id" value={{i.test_id}}>
+
+      <input type="submit" value="{{i.test_name}}"></form></td>
+
+  </tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+{% endblock content %}

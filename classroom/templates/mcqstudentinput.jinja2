@@ -1,0 +1,112 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+
+
+<div class="container">
+  <h2> Create Questions</h2>
+  <form action="/studentmcq2" method="POST">
+  <div class="form-group">
+    <label for="name">Enter the question number:</label>
+    <input type="id" class="form-control" id="name" placeholder="Type the Question number...." name="qno" required>
+  </div>
+  <div class="form-group">
+    <label for="name">Enter the mark:</label>
+    <input type="text" class="form-control" id="name" placeholder="Enter the mark...." name="qmark" required>
+  </div>
+    <div class="form-group">
+      <label for="name">Enter the question:</label>
+      <input type="text" class="form-control" id="name4" placeholder="Type the Question...." name="rqname" required>
+    </div>
+    <div class="form-group">
+    <label for="name">Enter the Image if any:</label>
+      <input type="file" name='qnimage' accept="image/*">
+      </div>
+      <div class="form-group">
+      <label for="name">Enter the reference link if any:</label>
+        <input type="text" name='qlink'>
+        </div>
+
+    <div class="form-group">
+      <label for="Answer">Enter the Answer:</label><br>
+        <input type="radio"   name="answer" value="opt1"> <input type="text" class="form-control" id="name" placeholder="Enter the Option...." name="roption1" required>
+        <input type="radio"   name="answer" value="opt2"> <input type="text" class="form-control" id="name" placeholder="Enter the mark...." name="roption2" required>
+        <input type="radio"   name="answer" value="opt3"> <input type="text" class="form-control" id="name" placeholder="Enter the mark...." name="roption3" required>
+        <input type="radio"   name="answer" value="opt4"> <input type="text" class="form-control" id="name" placeholder="Enter the mark...." name="roption4" required>
+    </div>
+
+        <p>!!!! LINK QUESTION !!!!!!</p>
+      <div class="form-group">
+        <label for="name">Enter the link question:</label>
+        <input type="text" class="form-control" id="name3" placeholder="Type the Question...." name="lqname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="Answer">Enter the Answer:</label><br>
+          <input type="radio"   name="answer1" value="opt1"> <input type="text" class="form-control" id="name" placeholder="Enter the Option...." name="loption1" required>
+          <input type="radio"   name="answer1" value="opt2"> <input type="text" class="form-control" id="name" placeholder="Enter the mark...." name="loption2" required>
+          <input type="radio"   name="answer1" value="opt3"> <input type="text" class="form-control" id="name" placeholder="Enter the mark...." name="loption3" required>
+          <input type="radio"   name="answer1" value="opt4"> <input type="text" class="form-control" id="name" placeholder="Enter the mark...." name="loption4" required>
+      </div>
+
+
+
+
+      <div class="form-group">
+      <label for="Answer">Enter the Answer:</label><br>
+      <label for="Answer">Enter the suggestion for root option 1 and link option 1:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug11" required>
+      <label for="Answer">Enter the suggestion for root option 1 and link option 2:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug12" required>
+      <label for="Answer">Enter the suggestion for root option 1 and link option 3:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug13" required>
+      <label for="Answer">Enter the suggestion for root option 1 and link option 4:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug14" required>
+      <label for="Answer">Enter the suggestion for root option 2 and link option 1:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug21" required>
+      <label for="Answer">Enter the suggestion for root option 2 and link option 2:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug22" required>
+      <label for="Answer">Enter the suggestion for root option 2 and link option 3:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug23" required>
+      <label for="Answer">Enter the suggestion for root option 2 and link option 4:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug24" required>
+      <label for="Answer">Enter the suggestion for root option 3 and link option 1:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug31" required>
+      <label for="Answer">Enter the suggestion for root option 3 and link option 2:</label><br>
+      <input type="text" class="form-control" id="name" placehoder="Type something...." name="sug32" required>
+      <label for="Answer">Enter the suggestion for root option 3 and link option 3:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug33" required>
+      <label for="Answer">Enter the suggestion for root option 3 and link option 4:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug34" required>
+      <label for="Answer">Enter the suggestion for root option 4 and link option 1:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug41" required>
+      <label for="Answer">Enter the suggestion for root option 4 and link option 2:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug42" required>
+      <label for="Answer">Enter the suggestion for root option 4 and link option 3:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug43" required>
+      <label for="Answer">Enter the suggestion for root option 4 and link option 4:</label><br>
+      <input type="text" class="form-control" id="name" placeholder="Type something...." name="sug44" required>
+
+</div>
+        <input type="submit" class="btn btn-default"></button>
+        </form>
+        </div>
+
+                      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">    </script>
+
+                      <script>
+                      $("#name3").keypress(function () {
+                            var _val = $("#name3").val();
+                            var _txt = _val.charAt(0).toUpperCase() + _val.slice(1);
+                            $("#name3").val(_txt);
+                        })
+                        $("#name4").keypress(function () {
+                              var _val = $("#name4").val();
+                              var _txt = _val.charAt(0).toUpperCase() + _val.slice(1);
+                              $("#name4").val(_txt);
+                          })
+
+                        </script>
+
+
+
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends "teachernav.jinja2" %}
+{% block content %}
+
+
+<div class="container">
+  <h2> Create Discussion Forum</h2>
+  <form action="/forumcreate" method="POST" >
+    <div class="form-group">
+      <label for="cname">Discussion  topic:</label>
+      <input type="text" class="form-control" id="topic" placeholder="Enter topic " name="topic">
+    </div>
+
+
+    <input type="submit" class="btn btn-default" name="formone">
+  </form>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet" type="text/css">
+
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <meta charset=utf-8 />
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="{{request.static_url('classroom:static/emoji-picker-master/lib/css/emoji.css')}}" rel="stylesheet">
+    <link href="{{request.static_url('classroom:static/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+
+<!--
+Ramayana CSS Template
+https://templatemo.com/tm-529-ramayana
+-->
+
+    <!-- Additional CSS Files -->
+    <link href="{{request.static_url('classroom:static/assets/css/fontawesome.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{request.static_url('classroom:static/assets/css/templatemo-style.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{request.static_url('classroom:static/assets/css/owl.css')}}" rel="stylesheet" type="text/css">
+
+
+
+  </head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+              <div class="logo">
+                <p>Iclix</p>
+                <a href="#"></a>
+              </div>
+            </header>
+            {% block content %}
+
+            {% endblock content %}
+
+
+
+
+
+
+          </div>
+        </div>
+
+      <!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+
+
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+
+                <li><a href="/check" >Courses</a></li>
+                <li><a href="/tp" >Profile</a></li>
+                <li><a href="/quizcoursecheck">Quiz</a></li>
+                <li><a href="/discussion">Discussion forum</a></li>
+                <li><a href="/z1">Attendance</a></li>
+                <li><a href="/reportcheck">Report</a></li>
+                <li><a href="/veryfirst">logout</a></li>
+
+
+
+              </ul>
+            </nav>
+
+            <!-- Featured Posts -->
+
+
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">Copyright &copy; 2019 Company Name
+              <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+
+          </div>
+        </div>
+
+    </div>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script>
+      $(document).ready(function() {
+          function disableBack() { window.history.forward() }
+
+          window.onload = disableBack();
+          window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
+      });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">    </script>
+    <script type="text/javascript" src="{{request.static_url('classroom:static/vendor/jquery/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{request.static_url('classroom:static/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/browser.min.js')}}"></script>
+    <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/breakpoints.min.js')}}"></script>
+    <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/transition.js')}}"></script>
+    <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/owl-carousel.js')}}"></script>
+    <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/custom.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Begin emoji-picker JavaScript -->
+    <script src="{{request.static_url('classroom:static/emoji-picker-master/lib/js/config.js')}}"></script>
+    <script src="{{request.static_url('classroom:static/emoji-picker-master/lib/js/util.js')}}"></script>
+    <script src="{{request.static_url('classroom:static/emoji-picker-master/lib/js/jquery.emojiarea.js')}}"></script>
+    <script src="{{request.static_url('classroom:static/emoji-picker-master/lib/js/emoji-picker.js')}}"></script>
+    <!-- End emoji-picker JavaScript -->
+    <script>
+      $(function() {
+        // Initializes and creates emoji set from sprite sheet
+        window.emojiPicker = new EmojiPicker({
+          emojiable_selector: '[data-emojiable=true]',
+          assetsPath:'{{request.static_url('classroom:static/emoji-picker-master/lib/img/')}}',
+          popupButtonClasses: 'fa fa-smile-o'
+        });
+        window.emojiPicker.discover();
+      });
+    </script>
+
+
+</body>
+
+
+
+
+</html>

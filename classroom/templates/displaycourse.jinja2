@@ -1,0 +1,48 @@
+{% extends "teachernav.jinja2" %}
+{% block content %}
+<form action="/createcourseform">
+<div class="w3-container">
+
+
+
+<input class="btn-primary" type= "submit" value="+" title="Add course">
+</div>
+</form>
+
+
+
+
+
+
+<div>
+<table style="width:100%">
+  <tr>
+    <th>Course ID</th>
+    <th>Course name</th>
+    <th>flip</th>
+  </tr>
+{%for i in course :%}
+  <tr>
+
+    <td> {{i.course_id}}</td>
+    <td><form action="/checktest" method="POST">
+      <input type="hidden" name ="course_id" value={{i.course_id}} >
+
+      <input type="submit" value="{{i.course_name}}"></form>
+    </td>
+
+
+    <td><form action="/flip" method="POST">
+      <input type="hidden" name ="courseid" value={{i.course_id}}>
+
+      <input type="submit" value= Flip></form>
+    </td>
+  </tr>
+
+{% endfor %}
+
+</table>
+
+
+</div>
+{% endblock content %}

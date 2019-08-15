@@ -1,0 +1,51 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+
+
+
+
+<div>
+<div class="container">
+  <h2> Test</h2>
+
+
+  <form action="/mcqnvalidate" method="POST">
+  {%for i,k in question %}
+
+
+
+
+
+    <div class="form-group">
+    <b>  <p>  {{i.question_no}}.{{i.Question_name}}</p></b>
+
+    </div>
+    {%if i.image is not none:%}
+    <div class="form-group">
+      <label for="name">Image:</label>
+      <img id="print" src={{i.image}} />
+    </div>
+    {%endif%}
+    {%if i.qlink is not none:%}
+    <div class="form-group">
+      <label for="name">Reference link:</label><a href="{{i.qlink}}">{{i.qlink}}</a>
+    </div>
+    {%endif%}
+
+    <div class="form-group">
+      <label for="Answer">Enter the Answer:</label><br>
+        <input type="radio" name="answer{{k}}" id="1" value="opt1"> <label for="1">{{i.opt1}}</label><br>
+        <input type="radio" name="answer{{k}}" id="2" value="opt2"> <label for="2">{{i.opt2}}</label><br>
+        <input type="radio" name="answer{{k}}" id="3" value="opt3"> <label for="3">{{i.opt3}}</label><br>
+        <input type="radio" name="answer{{k}}" id="4" value="opt4"> <label for="4"> {{i.opt4}}</label><br>
+    </div>
+
+
+
+
+    {% endfor %}
+    <input type="submit" class="btn btn-primary" value="submit">
+</form>
+</div>
+</div>
+{% endblock content %}

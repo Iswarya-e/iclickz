@@ -1,0 +1,51 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+
+
+<div class="container">
+  <h2> Create Questions</h2>
+  <form action="/studentdes2" method="POST">
+  <div class="form-group">
+    <label for="name">Enter the question number:</label>
+    <input type="id" class="form-control" id="name" placeholder="Type the Question number...." name="qno" required>
+  </div>
+  <div class="form-group">
+    <label for="name">Enter the mark:</label>
+    <input type="number" class="form-control" id="name" placeholder="Enter the mark...." name="qmark" required>
+  </div>
+    <div class="form-group">
+      <label for="name">Enter the question:</label>
+      <input type="text" class="form-control" id="name" placeholder="Type the Question...." name="qname" required>
+    </div>
+
+    <div class="form-group">
+    <label for="name">Enter the Image if any:</label>
+      <input type="image" name='qnimage' accept="image/*">
+      </div>
+      <div class="form-group">
+      <label for="name">Enter the reference link if any:</label>
+        <input type="text" name='qlink'>
+        </div>
+    <div class="form-group">
+      <label for="Answer">Enter the Answer:</label>
+      <input type="text" class="form-control" id="qname" placeholder="Type the answer" name="qans" >
+    </div>
+      <button type="submit" class="btn btn-default">Save</button>
+      </form>
+      </div>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">    </script>
+
+      <script>
+      $("#name").keypress(function () {
+            var _val = $("#name").val();
+            var _txt = _val.charAt(0).toUpperCase() + _val.slice(1);
+            $("#name").val(_txt);
+        })
+        $("#qname").keypress(function () {
+              var _val = $("#qname").val();
+              var _txt = _val.charAt(0).toUpperCase() + _val.slice(1);
+              $("#qname").val(_txt);
+          })
+        </script>
+{% endblock content %}

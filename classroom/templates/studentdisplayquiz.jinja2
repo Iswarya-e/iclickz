@@ -1,0 +1,33 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+
+
+
+
+
+
+
+<table style="width:100%">
+  <tr>
+    <th>Quiz ID</th>
+    <th>Quiz name</th>
+    <th> Take test</th>
+  </tr>
+{%for i in query:%}
+  <tr>
+
+      <td> {{i.quiz_id}}</td>
+      <td> {{i.quiz_name}}
+      <td><form action="/takequiz" method="POST">
+
+
+        <input type="hidden" name ="quiz_id" value={{i.quiz_id}} >
+
+        <input type="submit" value="take test" ></form></td>
+
+  </tr>
+
+{% endfor %}
+</table>
+
+{% endblock content %}

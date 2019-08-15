@@ -1,0 +1,67 @@
+{% extends "teachernav.jinja2" %}
+{% block content %}
+
+
+<div class="container">
+  <h2> Create Test</h2>
+  <form action="/test2" method="POST" >
+    <div class="form-group">
+      <label for="cname">Test Name:</label>
+      <input type="text" class="form-control" id="cname" placeholder="Enter test name" name="tname" required>
+    </div>
+    <div class="form-group">
+      <label for="cname">Start date:</label>
+      <input type="date" class="form-control" id="cname" placeholder="Enter When to start date" name="sdate" required>
+    </div>
+    <div class="form-group">
+      <label for="cname">End date:</label>
+      <input type="date" class="form-control" id="cname" placeholder="Enter end date" name="edate" required>
+    </div>
+    <div class="form-group"
+    <p>Select the question type</p>
+    <select name="qntype">
+    <option value="mcq">Mcq with root and link</option>
+    <option value="mcqn">Mcq</option>
+    <option value="truefalse">True OR False</option>
+    <option value="openended">Desciptive type</option>
+
+    </select>
+    </div>
+
+
+    <input type="submit" class="btn btn-default" name="formone">
+  </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">    </script>
+
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        $(document).keydown(function (e) {
+            return (e.which || e.keyCode) != 116;
+        });
+    });
+</script>
+<script>
+$("#cname").keypress(function () {
+      var _val = $("#cname").val();
+      var _txt = _val.charAt(0).toUpperCase() + _val.slice(1);
+      $("#cname").val(_txt);
+  })
+</script>
+<script language ="javascript">
+function Disable() {
+document.onmousedown=Disable;
+if (event.button == 2)
+{
+alert("This action is not possible")
+document.onmousedown=Disable;
+}
+}
+document.onmousedown=Disable;
+</script>
+
+{% endblock content %}

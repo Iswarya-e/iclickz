@@ -1,0 +1,67 @@
+{% extends "teachernav.jinja2" %}
+{% block content %}
+
+
+
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: "Attendance"
+	},
+	axisY:{
+		includeZero: false
+	},
+	data: [{
+		type: "line",
+		dataPoints: [
+  {%for i in range(0,count) :%}
+      { label: "{{stud_name[i]}}",  y: {{a[i]}}  },
+    {% endfor %}
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+
+<div>
+<form action="/reportdownload2" method=post enctype=multipart/form-data><p>
+<i class="fa fa-download"></i>
+<input type="submit" class="btn" value="Download report">
+</form>
+</div>
+
+<table style="width:100%">
+  <tr>
+    <th>Student ID</th>
+    <th>Student name</th>
+    <th>Mark </th>
+
+
+
+  </tr>
+{%for i in range(0,count) :%}
+  <tr>
+
+    <td> {{stud_id[i]}}</td>
+    <td> {{stud_name[i]}}</td>
+    <td> {{mark[i]}}</td>
+
+  </tr>
+{% endfor %}
+
+</table>
+
+
+
+{% endblock content %}

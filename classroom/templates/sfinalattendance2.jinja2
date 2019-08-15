@@ -1,0 +1,69 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+
+
+
+
+
+
+<form action="#">
+from:
+<input type="Date" name ="fdate" value={{session['from']}}>
+To:
+<input type="Date" name ="tdate"value={{session['to']}}>
+<input type="submit">
+</form>
+
+
+<table style="width:100%">
+  <tr>
+    <th>Test ID</th>
+
+    <th>Attendance </th>
+
+
+
+  </tr>
+{%for i in range(0,count) :%}
+  <tr>
+
+    <td> {{test[i]}}</td>
+
+    <td> {{attendance[i]}}</td>
+
+  </tr>
+{% endfor %}
+
+</table>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: "Attendance"
+	},
+	axisY:{
+		includeZero: false
+	},
+	data: [{
+		type: "line",
+		dataPoints: [
+  {%for i in range(0,count) :%}
+      { label: "{{test[i]}}",  y: {{a[i]}}  },
+    {% endfor %}
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+
+
+
+{% endblock content %}

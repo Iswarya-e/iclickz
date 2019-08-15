@@ -1,0 +1,43 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+
+
+
+
+<style>
+.disabled{
+opacity:0.6;
+cursor:not-allowed;
+}
+</style>
+<table style="width:100%">
+  <tr>
+    <th>Test ID</th>
+    <th>Test name</th>
+    <th> Take test</th>
+  </tr>
+{%for i in range(0,count):%}
+  <tr>
+
+      <td> {{a[i]}}</td>
+      <td> {{b[i]}}
+      <td><form action="/taketest" method ="POST">
+
+      {% if c[i] == 1 or z[i] == 0: %}
+        <input type="hidden" name ="test_id" value={{a[i]}} >
+
+        <input type="submit" disabled value="take test" ></form></td>
+      {% else %}
+      <input type="hidden" name ="test_id" value={{a[i]}} >
+
+      <input type="submit"  value="take test" ></form></td>
+      {% endif %}
+
+  </tr>
+
+{% endfor %}
+</table>
+
+
+
+{% endblock content %}

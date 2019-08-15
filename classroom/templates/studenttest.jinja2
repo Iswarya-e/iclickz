@@ -1,0 +1,51 @@
+{% extends "studentnav.jinja2" %}
+{% block content %}
+
+
+<div class="container">
+  <h2> Create Test</h2>
+  <form action="/studenttest2" method="POST" >
+    <div class="form-group">
+      <label for="cname">Test No:</label>
+      <input type="Integer" class="form-control" id="name3" placeholder="Enter test number" name="tname" required>
+    </div>
+    <div class="form-group">
+      <label for="cname">Test Name:</label>
+      <input type="text" class="form-control" id="name3" placeholder="Enter test name" name="tname" required>
+    </div>
+    <div class="form-group">
+      <label for="cname">Start date:</label>
+      <input type="Date" class="form-control" id="name3" placeholder="Enter the start date" name="sdate" required>
+    </div>
+    <div class="form-group">
+      <label for="cname">End date:</label>
+      <input type="Date" class="form-control" id="name3" placeholder="Enter theend date" name="edate" required>
+    </div>
+    <div class="form-group"
+    <p>Select the question type</p>
+    <select name="qntype">
+
+    <option value="mcq">Mcq with root and link</option>
+    <option value="truefalse">True OR False</option>
+    <option value="openended">Descriptive type</option>
+    <option value="mcqn">Mcq </option>
+
+    </select>
+    </div>
+    <input type="submit" class="btn btn-default" name="formone">
+  </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">    </script>
+
+<script>
+$("#name3").keypress(function () {
+      var _val = $("#name3").val();
+      var _txt = _val.charAt(0).toUpperCase() + _val.slice(1);
+      $("#name3").val(_txt);
+  })
+
+
+  </script>
+
+{% endblock content%}
