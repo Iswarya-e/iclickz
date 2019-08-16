@@ -2,7 +2,7 @@
 {% block content %}
 
 
-
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 <script>
 window.onload = function () {
 
@@ -18,8 +18,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	data: [{
 		type: "line",
 		dataPoints: [
-  {%for i in range(0,count) :%}
-      { label: "{{stud_name[i]}}",  y: {{a[i]}}  },
+  {%for i in range(0,count)%}
+      { label: "{{stud_name[i]}}",  y: {{a[i]}} },
     {% endfor %}
 		]
 	}]
@@ -29,7 +29,6 @@ chart.render();
 }
 </script>
 
-<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 

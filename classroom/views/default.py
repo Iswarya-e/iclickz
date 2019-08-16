@@ -534,28 +534,25 @@ def des2(request):
         qno = request.params['qno']
         qmark = request.params['qmark']
         link = request.params['qlink']
-        obj.image=request.params['img']
+        img=request.params['img']
 
         #image =request.params['img']
         query = request.dbsession.query(DescQuestion)
-        filename = request.POST['img'].filename
-        input_file = request.POST['img'].file
-
-        file= get_bytes_from_file(input_file)
 
 
 
 
 
 
-        print(file)
+
+
         obj = DescQuestion()
         obj.Question_name = qn
         obj.Answer = ans
         obj.question_no = qno
         obj.qmark = qmark
         obj.qlink = link
-        obj.image = file
+        obj.image = img
 
         obj.test_id = session['testid']
         request.dbsession.add(obj)
@@ -2339,7 +2336,7 @@ def takequiz(request):
 
 
 @view_config(route_name='quizvalidate')
-def val(request):
+def quizvalidate(request):
  try:
     session = request.session
     query = request.dbsession.query(Quizquestion)
@@ -2451,7 +2448,7 @@ def checkforum(request):
     query1 = request.dbsession.query(Forum)
     session = request.session
 
-    session['cid'] = request.params['course_id']
+    
     det = query1.filter(Forum.course_id == session['cid']).all()
     id1 = " "
     for i in det:
@@ -2910,7 +2907,7 @@ def tviewattendance(request):
                 if y.attendance=='present':
                     attendance[i]='Present'
                     percent[i]=100
-        print(stud_id,stud_name,attendance)
+        print(stud_id,stud_name,attendance,percent)
         print(count)
 
         return render_to_response('../templates/tviewattendance.jinja2',{'session' : session,'a':percent,'count':count,'stud_id':stud_id,'stud_name':stud_name,'attendance':attendance},request=request)

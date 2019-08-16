@@ -32,6 +32,35 @@ https://templatemo.com/tm-529-ramayana
   </head>
 
 <body class="is-preload">
+  <style>
+
+  .fa {
+    padding: 10px;
+    font-size: 20px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  /* Add a hover effect if you want */
+  .fa:hover {
+    opacity: 0.7;
+  }
+
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+
+  .fa-google {
+    background: #dd4b39;
+    color: white;
+  }
+  .fa-wechat {
+    background: #a4c639;
+    color: white;
+  }
+  </style>
 
     <!-- Wrapper -->
     <div id="wrapper">
@@ -60,6 +89,10 @@ https://templatemo.com/tm-529-ramayana
                 <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
               </div>
               <div class="form-group">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-google"></a>
+                <a href="#" class="fa fa-wechat"></a>
+
               <button type="submit" class="btn btn-default">Login</button>
               <a href="/teachersignup">Not an account holder?</a>
             </div>
@@ -87,14 +120,7 @@ https://templatemo.com/tm-529-ramayana
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
-    <script>
-      $(document).ready(function() {
-          function disableBack() { window.history.forward() }
 
-          window.onload = disableBack();
-          window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
-      });
-    </script>
 
     <script type="text/javascript" src="{{request.static_url('classroom:static/vendor/jquery/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{request.static_url('classroom:static/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -112,11 +138,7 @@ https://templatemo.com/tm-529-ramayana
     <script src="{{request.static_url('classroom:static/emoji-picker-master/lib/js/emoji-picker.js')}}"></script>
     <!-- End emoji-picker JavaScript -->
 
-    <script>
-    window.location.hash="no-back-button";
-    window.location.hash="Again-no-back-button";;
-    window.onhashchange=function(){window.location.hash="no-back-button";}
-    </script>
+    
 </body>
 
 

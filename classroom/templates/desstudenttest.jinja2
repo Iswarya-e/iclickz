@@ -27,11 +27,7 @@
       <label for="name">Reference link:</label><a href="{{i.qlink}}">{{i.qlink}}</a>
     </div>
     {%endif%}
-    {%if i.image is not none:%}
-    <div class="form-group">
-      <label for="image"></label><img src="{{fh[i]}}" alt="picture" width="500" height="333">
-    </div>
-    {%endif%}
+    
     <div class="form-group">
       <label for="Question">Your answer:</label>
       <input type="text" class="form-control" id="1" placeholder="Enter your answer..." name="ans{{k}}" >
