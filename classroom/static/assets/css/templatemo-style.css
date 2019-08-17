@@ -107,38 +107,41 @@ section {
 
 /* Banner */
 .main-banner .container-fluid {
-	padding-left: 10px;
-	padding-right: 10px;
+
+
 }
 .main-banner .banner-content {
 	background-image: url(../images/main-banner.jpg);
 	background-size: cover;
-	background-repeat: no-repeat;
+	
+	padding: 100px;
 }
 
 .main-banner .banner-content .banner-caption {
-    max-width: 450px;
-	background-color: rgba(250,250,250,0.95);
-	margin: 50px;
-	padding: 50px;
+    max-width: 500px;
+	background-color:transparent;
+	margin: 100px;
+	padding: 70px;
+
 }
 
 .main-banner .banner-content .banner-caption h4 {
 	font-size: 38px;
-	font-weight: 700;
-	color: #31323a;
+	font-weight: 1000;
+	color: black;
 	letter-spacing: 0.25px;
 	margin: 0px;
+	background: transparent;
 }
 
 .main-banner .banner-content .banner-caption em {
 	font-style: normal;
-	color: #535ba0;
+	color: black;
 }
 
 .main-banner .banner-content .banner-caption span {
 	font-size: 15px;
-	color: #aaaaaa;
+	color: black;
 	letter-spacing: 0.5px;
 	display: inline-block;
 	margin-top: 20px;

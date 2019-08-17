@@ -12,7 +12,7 @@
     <tr>
       <th>Course ID</th>
 
-      <th> Course Name</th>
+      <th> Create test</th>
 
     </tr>
   {%for i in query :%}
@@ -22,7 +22,7 @@
 
       <td><form action="/flipstore" method="POST">
         <input type="hidden" name ="course_id" value={{i.course_id}}>
-        <input type="submit" value="Test"></form>
+        <input type="submit" value=" Create Test"></form>
       </td>
 
 

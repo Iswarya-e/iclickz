@@ -1,9 +1,9 @@
 {% extends "teachernav.jinja2" %}
 {% block content %}
 <div>
-<form action="quiztemplate1" method="POST">
+<form action="quiztemplate2" method="POST">
 <table>
-{%for i in det :%}
+
 
 <tr>
   <th>Question No</th>
@@ -14,6 +14,7 @@
   <th>opt4</th>
 </tr>
 <br>
+{%for i in det :%}
   <tr>
     <td> {{i.question_no}}</td>
     <td> {{i.question_name}}</td>

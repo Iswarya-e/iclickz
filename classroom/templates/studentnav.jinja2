@@ -45,8 +45,9 @@ https://templatemo.com/tm-529-ramayana
             <header id="header">
               <div class="logo">
               <p>Welcome <b>{{session['usermail']}}</b></p>
-              <img src=""
+
               </div>
+                <img src="{{request.static_url('classroom:static/1.png')}}"></img>
             </header>
             <div>
             {% block content %}

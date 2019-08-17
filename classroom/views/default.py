@@ -22,7 +22,7 @@ from pyramid.response import Response
 import psycopg2
 import uuid
 import shutil
-
+import pyramid_excel as excel
 
 
 import requests
@@ -245,7 +245,7 @@ def teacherlog(request):
                 session['tid'] = i.teacher_id
                 return render_to_response('../templates/teachernav.jinja2',{'session' : session },request=request)
             else:
-                return render_to_response('../templates/teacherlogin.jinja2',{},request=request)
+                return render_to_response('../templates/teacherlogin.jinja2',{'session' : session,'error' : 'Enter correct details'},request=request)
     except DBAPIError:
         return Response(db_err_msg, content_type='text/plain', status=500)
 
@@ -268,6 +268,7 @@ def student1(request):
 def s1(request):
    try:
        print("try")
+
        query1 = request.dbsession.query(Student)
        name = request.params['name']
        Institution_name = request.params['insnm']
@@ -280,11 +281,18 @@ def s1(request):
        if re.match(r'[A-Za-z0-9@#$%^&+=]{4,}', password):
                  if rppwd == password:
                    obj = Student()
+
+
                    obj.name = name
                    obj.institute_name = Institution_name
                    obj.password = password
                    obj.email_id = email
                    request.dbsession.add(obj)
+                   abc=query1.filter(Student.password== password and Student.email_id == email).all()
+                   for i in abc:
+                       id = i.student_id
+
+                   request.dbsession.add(obj1)
                    return render_to_response('../templates/studentlogin.jinja2',{},request=request)
                  else:
                    return render_to_response('../templates/studentsignup.jinja2',{'error2' : 'passwords does not match !'},request=request)
@@ -1216,7 +1224,14 @@ def studentcourseadd(request):
             obj.course_name = cname
             obj.course_id = cid
             request.dbsession.add(obj)
+            query3 = request.dbsession.query(Studentquiz)
+            obj1= Studentquiz()
+            obj1.student_id = session['sid']
+            obj1.course_id = cid
+            obj1.lives = 3
+            request.dbsession.add(obj1)
             url=request.route_url('a2')
+
             return HTTPFound(url)
             return render_to_response('../templates/studentcontinuecourse.jinja2',{'session' : session },request=request)
         else:
@@ -1701,7 +1716,7 @@ def mcqvalui(request):
     obj1.attendance = "present"
     request.dbsession.add(obj1)
     #return render_to_response('../templates/mcqperformance.jinja2',{'session' : session },request=request)
-    return render_to_response('../templates/mcqperformance.jinja2',{'session':session,'sug':sug,'question':zip(questiondet,range(len(questiondet)))},request=request)
+    return render_to_response('../templates/mcqperformance.jinja2',{'session':session,'a':srans,'b':slans,'sug':sug,'question':zip(questiondet,range(len(questiondet)))},request=request)
  except DBAPIError:
         return Response(db_err_msg, content_type='text/plain', status=500)
 
@@ -2213,6 +2228,17 @@ def quiz21(request):
         return Response(db_err_msg, content_type='text/plain', status=500)
 
 
+@view_config(route_name='quiztemplate2')
+def quiz21(request):
+    try:
+        session = request.session
+
+
+        return render_to_response('../templates/quiztemplate2.jinja2',{'session' : session},request=request)
+
+
+    except DBAPIError:
+        return Response(db_err_msg, content_type='text/plain', status=500)
 
 
 
@@ -2265,6 +2291,44 @@ def quizstore(request):
 
 
 
+@view_config(route_name='quizstore2')
+
+def quizstore2(request):
+    try:
+        session = request.session
+
+
+        qmark = request.params['qmark']
+        query = request.dbsession.query(Quiz)
+
+
+        d = query.filter(Quiz.quiz_name == session['a'] ).all()
+        for i in d:
+            a=i.quiz_id
+        query = request.dbsession.query(Quizquestion)
+        obj = Quizquestion()
+
+        obj.question_name = request.params['qname']
+        obj.mark = request.params['qmark']
+        obj.question_no = request.params['qno']
+        obj.quiz_id = a
+        obj.opt1 = request.params['A']
+        obj.opt2 = request.params['B']
+        obj.opt3 = request.params['C']
+        obj.opt4 = request.params['D']
+        obj.crctopt = request.params['answer']
+        obj.qtime =request.params['appt']
+        obj.extension_time =request.params['exttime']
+        obj.hint =request.params['hint']
+
+        request.dbsession.add(obj)
+        url=request.route_url('quizcoursecheck')
+        return HTTPFound(url)
+        return render_to_response('../templates/welcomequiz.jinja2',{'session' : session},request=request)
+    except DBAPIError:
+        return Response(db_err_msg, content_type='text/plain', status=500)
+
+
 @view_config(route_name='a12')
 def a12(request):
     try:
@@ -2306,6 +2370,10 @@ def takequiz(request):
       session['qid'] = request.params['quiz_id']
       query = request.dbsession.query(Quiz)
       det = query.filter(Quiz.quiz_id == session['qid'])
+      query2 = request.dbsession.query(Studentquiz)
+      details = query2.filter(Studentquiz.course_id == session['cid']).all()
+      for i in details:
+          lives= i.lives
 
       question = request.dbsession.query(Quizquestion)
       questiondet = question.filter(Quizquestion.quiz_id == session['qid']).all()
@@ -2330,6 +2398,7 @@ def takequiz(request):
           ext.append(i.extension_time)
 
           print(f)
+
       return render_to_response('../templates/example.jinja2',{'session' : session,'a':a,'b':b,'c':c,'d':d,'e':e,'f':f,'a1':a1,'hint': hint,'ext':ext,'question':zip(questiondet,range(len(questiondet)))},request=request)
   except DBAPIError:
       return Response(db_err_msg, content_type='text/plain', status=500)
@@ -2448,7 +2517,7 @@ def checkforum(request):
     query1 = request.dbsession.query(Forum)
     session = request.session
 
-    
+
     det = query1.filter(Forum.course_id == session['cid']).all()
     id1 = " "
     for i in det:
@@ -2962,7 +3031,7 @@ def twreport(request):
         csv = rez
         print(rez)
 
-        return excel.make_response_from_array(csv, "xls")
+        return excel.make_response_from_array(csv, "xls",file_name="response")
     except DBAPIError:
      return Response(db_err_msg, content_type='text/plain', status=500)
 

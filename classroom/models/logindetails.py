@@ -230,7 +230,7 @@ class Quiz(Base):
     course_id =  Column(Integer, ForeignKey('course.course_id'))
     quiz_no =  Column(Integer)
     quiz_name = Column(Text)
-    quizstud = relationship("Studentquiz")
+    
     quiz1 =relationship("Quizquestion",cascade="all, delete-orphan")
 
 class Quizquestion(Base):
@@ -254,11 +254,8 @@ class Studentquiz(Base):
     stquizid = Column(Integer,primary_key=True)
     student_id = Column(Integer, ForeignKey('student.student_id'))
     course_id =Column(Integer, ForeignKey('course.course_id'))
-    quiz_id =Column(Integer, ForeignKey('quiz.quiz_id'))
-    mark = Column(Integer)
-    attendance = Column(Text)
     lives = Column(Integer)
-    percentage =  Column(Integer)
+
 
 class Forum(Base):
     __tablename__ = 'forum'

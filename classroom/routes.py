@@ -78,6 +78,7 @@ def includeme(config):
     config.add_route('checkquiz', '/checkquiz')
     config.add_route('quiz2', '/quiz2')
     config.add_route('quizstore', '/quizstore')
+    config.add_route('quizstore2', '/quizstore2')
     config.add_route('answer', '/answer')
     config.add_route('quiz1', '/quiz1')
     config.add_route('a12', '/a12')
@@ -85,6 +86,7 @@ def includeme(config):
     config.add_route('takequiz', '/takequiz')
     config.add_route('dispquizques', '/dispquizques')
     config.add_route('quiztemplate1', '/quiztemplate1')
+    config.add_route('quiztemplate2', '/quiztemplate2')
     config.add_route('quizvalidate', '/quizvalidate')
     config.add_route('checkforum', '/checkforum')
     config.add_route('discussion', '/discussion')
@@ -116,4 +118,3 @@ def includeme(config):
     config.add_route('reportdownload2', '/reportdownload2')
     config.add_route('category', '/category')
     config.add_route('checkforum2', '/checkforum2')
-    
