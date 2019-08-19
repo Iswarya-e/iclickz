@@ -2517,7 +2517,7 @@ def checkforum(request):
     query1 = request.dbsession.query(Forum)
     session = request.session
 
-
+    session['cid'] =request.params['course_id']
     det = query1.filter(Forum.course_id == session['cid']).all()
     id1 = " "
     for i in det:

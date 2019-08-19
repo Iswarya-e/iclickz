@@ -33,7 +33,7 @@ https://templatemo.com/tm-529-ramayana
   </head>
 
 <body class="is-preload" onload="setTimeout()">
-
+<div>
     <!-- Wrapper -->
     <div id="wrapper">
 
@@ -44,10 +44,12 @@ https://templatemo.com/tm-529-ramayana
             <!-- Header -->
             <header id="header">
               <div class="logo">
-              <p>Welcome <b>{{session['usermail']}}</b></p>
 
-              </div>
-                <img src="{{request.static_url('classroom:static/1.png')}}"></img>
+
+
+
+
+  </div>
             </header>
             <div>
             {% block content %}
@@ -88,17 +90,10 @@ https://templatemo.com/tm-529-ramayana
             <!-- Featured Posts -->
 
 
-            <!-- Footer -->
-            <footer id="footer">
-              <p class="copyright">Copyright &copy; 2019 Company Name
-              <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
-            </footer>
-
           </div>
         </div>
-
-    </div>
-
+</div>
+</div>
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
     <script>

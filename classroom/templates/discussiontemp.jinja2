@@ -3,16 +3,21 @@
 
   <head>
 
+
+    <meta http-equiv="refresh" content="5" />
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet" type="text/css">
 
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+        <meta charset=utf-8 />
 
 
     <!-- Bootstrap core CSS -->
-
     <link href="{{request.static_url('classroom:static/emoji-picker-master/lib/css/emoji.css')}}" rel="stylesheet">
     <link href="{{request.static_url('classroom:static/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 
@@ -26,66 +31,65 @@ https://templatemo.com/tm-529-ramayana
     <link href="{{request.static_url('classroom:static/assets/css/templatemo-style.css')}}" rel="stylesheet" type="text/css">
     <link href="{{request.static_url('classroom:static/assets/css/owl.css')}}" rel="stylesheet" type="text/css">
 
-
-
   </head>
 
-<body class="is-preload">
+<body class="is-preload" onload="setTimeout()">
 
     <!-- Wrapper -->
+    <div id="wrapper">
 
-
-
+      <!-- Main -->
         <div id="main">
-        <!-- <div class="inner">
+          <div class="inner">
 
-
+            <!-- Header -->
             <header id="header">
               <div class="logo">
-                <img src="{{request.static_url('classroom:static/logo.jpg')}}"> </img>
-              <select name="Language">
-                  <option class="btn btn-primary" value="English">Language</option>
-                  <option class="btn btn-primary" value="English">English</option>
-                  <option  class="btn btn-primary" value="Chinese">Chinese</option>
-
-                </select>
-
-
-              </div>
+  </div>
             </header>
-            -->
-            <section class="main-banner">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="banner-content">
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="banner-caption">
-                            <h4>Welcome to <em>ICLIKZ</em></h4>
+            <div>
+            {% block content %}
 
-                              <div class="w3-bar">
-
-                              <button class ="w3-button w3-black" name="student" value="student"><a href="/studentlogin">Student</a></button></li>
-                                <button class="w3-button w3-black" name="teacher" value="teacher"><a href="/teacherlogin">Teacher</a></button></li>
-
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </section>
+            {% endblock content %}
+          </div>
 
 
 
 
 
           </div>
+        </div>
+
+      <!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+
+
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+                <li><a href="/a2">Courses</a></li>
+                <li><a href="/sp">Profile</a></li>
+                <li><a href="/a12">Quiz</a></li>
+                <li><a href="/studentreportcheck">Report</a></li>
+                <li><a href="/asateacher">Flipped</a></li>
+                <li><a href="/sattendance">Attendance</a></li>
+                <li><a href="/studentdiscussion">Discussion forum</a></li>
+                <li><a href="/veryfirst">logout</a></li>
+
+
+              </ul>
+            </nav>
+
+            <!-- Featured Posts -->
+
+
+          </div>
+        </div>
+
+    </div>
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
@@ -97,7 +101,7 @@ https://templatemo.com/tm-529-ramayana
           window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
       });
     </script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{request.static_url('classroom:static/vendor/jquery/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{request.static_url('classroom:static/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/browser.min.js')}}"></script>
@@ -105,6 +109,8 @@ https://templatemo.com/tm-529-ramayana
     <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/transition.js')}}"></script>
     <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/owl-carousel.js')}}"></script>
     <script type="text/javascript" src="{{request.static_url('classroom:static/assets/js/custom.js')}}"></script>
+
+
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
     <!-- Begin emoji-picker JavaScript -->
@@ -114,11 +120,26 @@ https://templatemo.com/tm-529-ramayana
     <script src="{{request.static_url('classroom:static/emoji-picker-master/lib/js/emoji-picker.js')}}"></script>
     <!-- End emoji-picker JavaScript -->
 
+
     <script>
-    window.location.hash="no-back-button";
-    window.location.hash="Again-no-back-button";;
-    window.onhashchange=function(){window.location.hash="no-back-button";}
+      $(function() {
+        // Initializes and creates emoji set from sprite sheet
+        window.emojiPicker = new EmojiPicker({
+          emojiable_selector: '[data-emojiable=true]',
+          assetsPath:'{{request.static_url('classroom:static/emoji-picker-master/lib/img/')}}',
+          popupButtonClasses: 'fa fa-smile-o'
+        });
+        window.emojiPicker.discover();
+      });
     </script>
+
+    <script>
+    if(window.history.replaceState){
+    window.history.replaceState(null,null,window.location.href);
+    }
+    </script>
+
+
 </body>
 
 
